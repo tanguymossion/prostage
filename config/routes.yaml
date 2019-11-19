@@ -1,3 +1,19 @@
 prostage_accueil:
     path: /accueil
     controller: App\Controller\ProstageController::index
+
+prostage_bvn:
+    path: /
+    controller: App\Controller\ProstageController::bvn
+
+prostage_entreprises:
+    path: /entreprises
+    controller: App\Controller\ProstageController::entreprises
+
+prostage_formations:
+    path: /formations
+    controller: App\Controller\ProstageController::formations
+
+prostage_stages:
+    path: /stages/{id}
+    controller: App\Controller\ProstageController::stages
