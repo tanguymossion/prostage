@@ -1,5 +1,14 @@
-<html>
-<body>
-    <h1>Bienvenue sur la page d'accueil de Prostages</h1>
-</body>
-</html>
+{% extends 'base.html.twig' %}
+
+{% block titre %}
+    {{parent()}} : Accueil
+{% endblock %}
+
+{% block entete %}
+    <h1> {{name}} </h1>
+{% endblock %}
+
+{% block contenu %}
+    <h1> Bienvenue sur la page d'accueil de Prostages </h1>
+{% endblock %}
+

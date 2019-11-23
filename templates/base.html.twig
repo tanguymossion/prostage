@@ -2,11 +2,33 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>
+            {% block titre %} 
+                Prostages
+            {% endblock %}
+            {% block stylesheets %}
+            {% endblock %}
+        </title>
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
+        <h1> ----------------- entete ----------------- </h1>
+        {% block entete %}
+        {% endblock %}
+
+        <h1> ----------------- menu ----------------- </h1>
+        {% block menu %}
+        {% endblock %}
+
+        <h1> ----------------- contenu ----------------- </h1>
+        {% block contenu %}
+        {% endblock %}
+
+        <h1> ----------------- piedPage ----------------- </h1>
+        {% block piedPage %}
+        {% endblock %}
+
+        {% block javascripts %}
+        {% endblock %}
     </body>
 </html>

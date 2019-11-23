@@ -1,5 +1,14 @@
-<html>
-<body>
-    <h1>Cette page affichera la liste des formations de l'IUT</h1>
-</body>
-</html>
+{% extends 'base.html.twig' %}
+
+{% block titre %}
+    {{parent()}} : Formations
+{% endblock %}
+
+{% block entete %}
+    <h1> {{name}} </h1>
+{% endblock %}
+
+{% block contenu %}
+    <h1> Cette page affichera la liste des formations de l'IUT </h1>
+{% endblock %}
+

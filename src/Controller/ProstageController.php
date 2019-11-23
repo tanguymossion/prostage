@@ -17,23 +17,23 @@ class ProstageController extends AbstractController
 
     public function bvn()
     {
-        return $this->render('prostage/bvn.html.twig');
+        return $this->render('prostage/bvn.html.twig',['name' => 'Accueil']);
     }
 
     public function entreprises()
     {
-        return $this->render('prostage/entreprises.html.twig');
+        return $this->render('prostage/entreprises.html.twig',['name' => 'Entreprises']);
     }
 
     public function formations()
     {
-        return $this->render('prostage/formations.html.twig');
+        return $this->render('prostage/formations.html.twig',['name' => 'Formations']);
     }
 
     public function stages($id)
     {
         return $this->render('prostage/stages.html.twig', 
-        ['idStage' => $id]);
+        ['name' => 'Stages','idStage' => $id]);
     }
     
 }
