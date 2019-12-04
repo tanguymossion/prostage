@@ -6,29 +6,120 @@
             {% block titre %} 
                 Prostages
             {% endblock %}
-            {% block stylesheets %}
-            {% endblock %}
         </title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="/css/bootstrap.min.css">
+        {% endblock %}
+           
     </head>
     <body>
+    <div class="container-fluid" id="hautPage">
+	
+    <!-- Barre de navigation -->
+        {% block navbar %}
+        <div class="row">
+		<div class="col-md-12">
+		
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="{{ path('prostage_bvn') }}"> Prostages </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <h1> ----------------- entete ----------------- </h1>
-        {% block entete %}
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('prostage_entreprises') }}"> Entreprises </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('prostage_formations') }}"> Formations </a>
+                </li>
+
+                </ul>
+            </div>
+            </nav>
+    </div>
+	</div>
         {% endblock %}
 
-        <h1> ----------------- menu ----------------- </h1>
-        {% block menu %}
-        {% endblock %}
-
-        <h1> ----------------- contenu ----------------- </h1>
+</br>
+    <!-- Contenu -->
         {% block contenu %}
+        <div class="col-md-12">
+            <h2> Liste des stages </h2>
+            <div class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button class="btn btn-link-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    Stage 1 <span class="badge badge-pill badge-primary" style="margin-left: 15px;"> Posté aujourd'hui </span>
+                    </button>
+                </h2>
+                </div>
+
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    Description du stage 1
+                    </br></br>
+                    <a class="btn btn-primary" href="/stages/1" role="button"> Voir plus </a>
+                </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Stage 2
+                    </button>
+                </h2>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                    Description du stage 2
+                    </br></br>
+                    <a class="btn btn-primary" href="/stages/2" role="button"> Voir plus </a>
+                </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                    <button class="btn btn-link-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Stage 3
+                    </button>
+                </h2>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+                    Description du stage 3
+                    </br></br>
+                    <a class="btn btn-primary" href="/stages/3" role="button"> Voir plus </a>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
         {% endblock %}
 
-        <h1> ----------------- piedPage ----------------- </h1>
+</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+
+    <!-- piedPage -->
         {% block piedPage %}
+            <footer class="footer fixed-bottom font-small blue">
+                <a type="button" class="btn btn-primary btn-lg btn-block" href="#hautPage"> Retourner en haut de la page </a>
+            </footer>
         {% endblock %}
 
+
+</div>
         {% block javascripts %}
+            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         {% endblock %}
+   
     </body>
 </html>
