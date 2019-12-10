@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ea95b8a762635334b8f099ed41b21656",
+    "content-hash": "8c79c2c914553c9cfe059cc8c09992f6",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -5316,6 +5316,54 @@
                 "productivity"
             ],
             "time": "2019-10-24T07:13:31+00:00"
+        },
+        {
+            "name": "fzaninotto/faker",
+            "version": "v1.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fzaninotto/Faker.git",
+                "reference": "27a216cbe72327b2d6369fab721a5843be71e57d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/27a216cbe72327b2d6369fab721a5843be71e57d",
+                "reference": "27a216cbe72327b2d6369fab721a5843be71e57d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.3 || ^7.0"
+            },
+            "require-dev": {
+                "ext-intl": "*",
+                "phpunit/phpunit": "^4.8.35 || ^5.7",
+                "squizlabs/php_codesniffer": "^2.9.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": []
+            },
+            "autoload": {
+                "psr-4": {
+                    "Faker\\": "src/Faker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "François Zaninotto"
+                }
+            ],
+            "description": "Faker is a PHP library that generates fake data for you.",
+            "keywords": [
+                "data",
+                "faker",
+                "fixtures"
+            ],
+            "time": "2019-11-14T13:13:06+00:00"
         },
         {
             "name": "nikic/php-parser",
