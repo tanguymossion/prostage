@@ -10,11 +10,22 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $formationDUTInfo = new Formation();
-        $formationDUTInfo->setNom("DUT Informatique");
+        // Création d'un générateur de données Faker
+        $faker = \Faker\Factory::create('fr_FR');
 
-        $manager->persist($formationDUTInfo);
+        $nbFormations = 5;
 
+        for($i=1; $i <= $nbFormations ; $i++)
+        {
+            // Création d'une nouvelle formation
+            $formationDUTInfo = new Formation();
+            // Définition d'un nom de formation
+            $formationDUTInfo->setNom($faker->realText($maxNbChars = 20, $indexSize = 2));
+            // Enregistrement de la formation créée
+            $manager->persist($formationDUTInfo);
+        }
+
+        // Envoyer les données en BD
         $manager->flush();
     }
 }
