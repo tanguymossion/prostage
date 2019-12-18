@@ -24,7 +24,7 @@ class Entreprise
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=200)
+     * @ORM\Column(type="string", length=255)
      */
     private $adresse;
 
@@ -39,13 +39,13 @@ class Entreprise
     private $site;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Stage", mappedBy="entreprise")
+     * @ORM\OneToMany(targetEntity="App\Entity\Stage", mappedBy="monEntreprise")
      */
-    private $stages;
+    private $mesStages;
 
     public function __construct()
     {
-        $this->stages = new ArrayCollection();
+        $this->mesStages = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -104,28 +104,28 @@ class Entreprise
     /**
      * @return Collection|Stage[]
      */
-    public function getStages(): Collection
+    public function getMesStages(): Collection
     {
-        return $this->stages;
+        return $this->mesStages;
     }
 
-    public function addStage(Stage $stage): self
+    public function addMesStage(Stage $mesStage): self
     {
-        if (!$this->stages->contains($stage)) {
-            $this->stages[] = $stage;
-            $stage->setEntreprise($this);
+        if (!$this->mesStages->contains($mesStage)) {
+            $this->mesStages[] = $mesStage;
+            $mesStage->setMonEntreprise($this);
         }
 
         return $this;
     }
 
-    public function removeStage(Stage $stage): self
+    public function removeMesStage(Stage $mesStage): self
     {
-        if ($this->stages->contains($stage)) {
-            $this->stages->removeElement($stage);
+        if ($this->mesStages->contains($mesStage)) {
+            $this->mesStages->removeElement($mesStage);
             // set the owning side to null (unless already changed)
-            if ($stage->getEntreprise() === $this) {
-                $stage->setEntreprise(null);
+            if ($mesStage->getMonEntreprise() === $this) {
+                $mesStage->setMonEntreprise(null);
             }
         }
 

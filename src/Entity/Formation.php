@@ -19,18 +19,23 @@ class Formation
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=30)
      */
-    private $nom;
+    private $nomCourt;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Stage", mappedBy="formations")
+     * @ORM\Column(type="string", length=100)
      */
-    private $stages;
+    private $nomLong;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Stage", mappedBy="mesFormations")
+     */
+    private $mesStages;
 
     public function __construct()
     {
-        $this->stages = new ArrayCollection();
+        $this->mesStages = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -38,14 +43,26 @@ class Formation
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getNomCourt(): ?string
     {
-        return $this->nom;
+        return $this->nomCourt;
     }
 
-    public function setNom(string $nom): self
+    public function setNomCourt(string $nomCourt): self
     {
-        $this->nom = $nom;
+        $this->nomCourt = $nomCourt;
+
+        return $this;
+    }
+
+    public function getNomLong(): ?string
+    {
+        return $this->nomLong;
+    }
+
+    public function setNomLong(string $nomLong): self
+    {
+        $this->nomLong = $nomLong;
 
         return $this;
     }
@@ -53,26 +70,26 @@ class Formation
     /**
      * @return Collection|Stage[]
      */
-    public function getStages(): Collection
+    public function getMesStages(): Collection
     {
-        return $this->stages;
+        return $this->mesStages;
     }
 
-    public function addStage(Stage $stage): self
+    public function addMesStage(Stage $mesStage): self
     {
-        if (!$this->stages->contains($stage)) {
-            $this->stages[] = $stage;
-            $stage->addFormation($this);
+        if (!$this->mesStages->contains($mesStage)) {
+            $this->mesStages[] = $mesStage;
+            $mesStage->addMesFormation($this);
         }
 
         return $this;
     }
 
-    public function removeStage(Stage $stage): self
+    public function removeMesStage(Stage $mesStage): self
     {
-        if ($this->stages->contains($stage)) {
-            $this->stages->removeElement($stage);
-            $stage->removeFormation($this);
+        if ($this->mesStages->contains($mesStage)) {
+            $this->mesStages->removeElement($mesStage);
+            $mesStage->removeMesFormation($this);
         }
 
         return $this;

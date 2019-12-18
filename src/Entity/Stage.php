@@ -24,7 +24,7 @@ class Stage
     private $titre;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=255)
      */
     private $description;
 
@@ -34,19 +34,19 @@ class Stage
     private $email;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Entreprise", inversedBy="stages")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Entreprise", inversedBy="mesStages")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $entreprise;
+    private $monEntreprise;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Formation", inversedBy="stages")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Formation", inversedBy="mesStages")
      */
-    private $formations;
+    private $mesFormations;
 
     public function __construct()
     {
-        $this->formations = new ArrayCollection();
+        $this->mesFormations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -90,14 +90,14 @@ class Stage
         return $this;
     }
 
-    public function getEntreprise(): ?Entreprise
+    public function getMonEntreprise(): ?Entreprise
     {
-        return $this->entreprise;
+        return $this->monEntreprise;
     }
 
-    public function setEntreprise(?Entreprise $entreprise): self
+    public function setMonEntreprise(?Entreprise $monEntreprise): self
     {
-        $this->entreprise = $entreprise;
+        $this->monEntreprise = $monEntreprise;
 
         return $this;
     }
@@ -105,24 +105,24 @@ class Stage
     /**
      * @return Collection|Formation[]
      */
-    public function getFormations(): Collection
+    public function getMesFormations(): Collection
     {
-        return $this->formations;
+        return $this->mesFormations;
     }
 
-    public function addFormation(Formation $formation): self
+    public function addMesFormation(Formation $mesFormation): self
     {
-        if (!$this->formations->contains($formation)) {
-            $this->formations[] = $formation;
+        if (!$this->mesFormations->contains($mesFormation)) {
+            $this->mesFormations[] = $mesFormation;
         }
 
         return $this;
     }
 
-    public function removeFormation(Formation $formation): self
+    public function removeMesFormation(Formation $mesFormation): self
     {
-        if ($this->formations->contains($formation)) {
-            $this->formations->removeElement($formation);
+        if ($this->mesFormations->contains($mesFormation)) {
+            $this->mesFormations->removeElement($mesFormation);
         }
 
         return $this;
