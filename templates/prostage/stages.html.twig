@@ -8,10 +8,12 @@
     <h2> {{ stage.titre }} </h2>
     Proposé par l'entreprise : <b> {{stage.monEntreprise.nom}} </b> </br>
     Proposé pour : 
-    {% for formationCourante in stage.mesFormations %}
-    <b> {{ formationCourante.nomCourt }} </b>
-    {% endfor %}
-    </br></br></br>
+    <ul>
+        {% for formationCourante in stage.mesFormations %}
+            <li> {{ formationCourante.nomCourt }} </li>
+        {% endfor %}
+    </ul>
+    </br>
 
     <h4> Description </h4>
     {{ stage.description }}
