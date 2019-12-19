@@ -1,69 +1,66 @@
 {% extends 'base.html.twig' %}
 
 {% block contenu %}
-
-                        <h2> Liste des stages </h2>
-                <div class="accordion" id="accordionExample">
-                <div class="card">
-                    <div class="card-header" id="headingOne">
-                    <h2 class="mb-0">
-                        <button title="Vas-y clique !" class="btn btn-link-secondary collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+    <h2> Liste des stages </h2>
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button title="Vas-y clique !" class="btn btn-link-secondary collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                         <u> Titre stage 1 </u> 
                         <span class="badge badge-pill badge-primary" style="margin-left: 15px;"> Posté aujourd'hui </span>
-                        </button>
-                    </h2>
-                    </div>
-
-                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <b> Entreprise :</b> Magnfiqu'Entreprise </br>
-                            <b> Formation :</b> DUT Informatique </br></br>
-                            Description du stage 1
-                            </br></br>
-                            <a class="btn btn-primary" href="/stages/1" role="button" > Voir plus </a>
-                        </div>
-                    </div>
-                </div>
-            
-                <div class="card">
-                    <div class="card-header"  id="headingTwo">
-                        <h2 class="mb-0">
-                            <button  title="Vas-y clique !" class="btn btn-link-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            <u> Titre stage 2 </u>
-                            </button>
-                        </h2>
-                    </div>  
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <b> Entreprise :</b> Fantasmagoriqu'Entreprise </br>
-                            <b> Formation :</b> Licence Pro Informatique </br></br>
-                            Description du stage 2
-                            </br></br>
-                            <a class="btn btn-primary" href="/stages/2" role="button"> Voir plus </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header" id="headingThree">
-                        <h2 class="mb-0">
-                            <button title="Vas-y clique !" class="btn btn-link-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            <u> Titre stage 3 </u>
-                            </button>
-                        </h2>
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <b> Entreprise :</b> Epiqu'Entreprise </br>
-                            <b> Formation :</b> DUT Informatique </br></br>
-                            Description du stage 3
-                            </br></br>
-                            <a class="btn btn-primary" href="/stages/3" role="button"> Voir plus </a>
-                        </div>
-                    </div>
-                </div>
+                    </button>
+                </h2>
             </div>
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    <b> Entreprise :</b> Magnfiqu'Entreprise </br>
+                    <b> Formation :</b> DUT Informatique </br></br>
+                    Description du stage 1
+                    </br></br>
+                    <a class="btn btn-primary" href="/stages/1" role="button" > Voir plus </a>
+                </div>
             </div>
         </div>
+                
+        <div class="card">
+            <div class="card-header"  id="headingTwo">
+                <h2 class="mb-0">
+                    <button  title="Vas-y clique !" class="btn btn-link-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <u> Titre stage 2 </u>
+                    </button>
+                </h2>
+            </div>  
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                    <b> Entreprise :</b> Fantasmagoriqu'Entreprise </br>
+                    <b> Formation :</b> Licence Pro Informatique </br></br>
+                    Description du stage 2
+                    </br></br>
+                    <a class="btn btn-primary" href="/stages/2" role="button"> Voir plus </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                    <button title="Vas-y clique !" class="btn btn-link-primary collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <u> Titre stage 3 </u>
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+                    <b> Entreprise :</b> Epiqu'Entreprise </br>
+                    <b> Formation :</b> DUT Informatique </br></br>
+                    Description du stage 3
+                    </br></br>
+                    <a class="btn btn-primary" href="/stages/3" role="button"> Voir plus </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 {% endblock %}
 
