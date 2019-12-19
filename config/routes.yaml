@@ -19,11 +19,11 @@ prostage_stages:
     controller: App\Controller\ProstageController::stages
 
 prostage_parEntreprise:
-    path: /entreprises/{id}
+    path: /parentreprise/{id}
     controller: App\Controller\ProstageController::parEntreprise
 
 prostage_parFormation:
-    path: /formations/{id}
+    path: /parformation/{id}
     controller: App\Controller\ProstageController::parFormation
 
 prostage_aPropos:
