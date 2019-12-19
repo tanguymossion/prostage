@@ -12,125 +12,92 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        // Formations dans une liste
-        
-        // Définiion des entreprises
-        // for nb d'entreprise aléatoire
-        // Création d'une entreprise
-        // persist
-        // Définition des stages
-        // for nb de stages aléatoire
-        // Création d'un stage
-        // Ajout d'une formation à un stage
-        // Ajout du stage à la formation
-        // Ajout du stage à l'entreprise
-
-
         // Création d'un générateur de données Faker
         $faker = \Faker\Factory::create('fr_FR');
 
         /******************************************
          ******** CREATION DES FORMATIONS *********     
          ******************************************/
+
+        $DUTInfo = new Formation();
+        $DUTInfo->setNomCourt("DUT Informatique");
+        $DUTInfo->setNomLong("Diplôme Universitaire Technologique Informatique");
+
+        $LPProg = new Formation();
+        $LPProg->setNomCourt("LP Programmation Avancée");
+        $LPProg->setNomLong("Licence Professionnelle Programmation Avancée");
         
-        //////////////////////////////////////////////////////////////////////////////
-        // Création d'une nouvelle formation
-        $formationDUTInfo = new Formation();
-        // Définition des attributs
-        $formationDUTInfo->setNomCourt("DUT Informatique");
-        $formationDUTInfo->setNomLong("Diplome Universitaire Technologique Informatique");
-        // Enregistrement de la formation créée
-        $manager->persist($formationDUTInfo);
+        $DUTIC = new Formation();
+        $DUTIC->setNomCourt("DU TIC");
+        $DUTIC->setNomLong("Diplôme Universitaire Technologies de l'Information et de la Communication");
 
-        //////////////////////////////////////////////////////////////////////////////
-        // Création d'une nouvelle formation
-        $formationLicenceProMul = new Formation();
-        // Définition des attributs
-        $formationLicenceProMul->setNomCourt("LP Multimédia");
-        $formationLicenceProMul->setNomLong("Licence Professionnelle Multimédia");
-        // Enregistrement de la formation créée
-        $manager->persist($formationLicenceProMul);
-
-        //////////////////////////////////////////////////////////////////////////////
-        // Création d'une nouvelle formation
-        $formationDUTIC = new Formation();
-        // Définition des attributs
-        $formationDUTIC->setNomCourt("DU TIC");
-        $formationDUTIC->setNomLong("Diplome Universitaire TIC");
-        // Enregistrement de la formation créée
-        $manager->persist($formationDUTIC);
-
+        $listForm = array($DUTInfo,$LPProg,$DUTIC);
+        foreach ($listForm as $uneFormation)
+        {
+            $manager->persist($uneFormation);
+        }
 
         /******************************************
          ******** CREATION DES ENTREPRISES ********     
          ******************************************/
         
-        // Création d'une nouvelle entreprise
-        $entrepriseWeb = new Entreprise();
-        // Définition des attributs
-        $entrepriseWeb->setNom($faker->company($maxNbChars = 20));
-        $entrepriseWeb->setAdresse($faker->address($maxNbChars = 50));
-        $entrepriseWeb->setActivite("Web");
-        $entrepriseWeb->setSite($faker->url($maxNbChars = 30));
-        // Enregistrement de l'entreprise créée
-        $manager->persist($entrepriseWeb);
+        $nbEntreprise = $faker->numberBetween($min = 5, $max = 10);
+        $listEntreprise = array();
 
-        // Création d'une nouvelle entreprise
-        $entrepriseSecu = new Entreprise();
-        // Définition des attributs
-        $entrepriseSecu->setNom($faker->company($maxNbChars = 20));
-        $entrepriseSecu->setAdresse($faker->address($maxNbChars = 50));
-        $entrepriseSecu->setActivite("Sécurité");
-        $entrepriseSecu->setSite($faker->url($maxNbChars = 30));
-        // Enregistrement de l'entreprise créée
-        $manager->persist($entrepriseSecu);
+        for ($i = 0; $i < $nbEntreprise ; $i++)
+        {
+            $entreprise = new Entreprise();
+            $nomEntreprise = $faker->company;
+            $nomEntrepriseSite = strtolower($nomEntreprise); // Chaîne en minuscule 
+            $nomEntrepriseSite = str_replace(' ', '', $nomEntrepriseSite); // Chaîne sans espace
+            $nomEntrepriseSite = str_replace('.', '', $nomEntrepriseSite); // Chaîne sans "."
 
-        // Création d'une nouvelle entreprise
-        $entrepriseDev = new Entreprise();
-        // Définition des attributs
-        $entrepriseDev->setNom($faker->company($maxNbChars = 20));
-        $entrepriseDev->setAdresse($faker->address($maxNbChars = 50));
-        $entrepriseDev->setActivite("Développement d'applications mobiles");
-        $entrepriseDev->setSite($faker->url($maxNbChars = 30));
-        // Enregistrement de l'entreprise créée
-        $manager->persist($entrepriseDev);
+            $entreprise->setNom($nomEntreprise);
+            $entreprise->setActivite($faker->jobTitle);
+            $entreprise->setAdresse($faker->address);
+            $entreprise->setSite($faker->regexify('http\:\/\/'.'www\.'.$nomEntrepriseSite.'\.'.$faker->tld));
 
+            // Ajout dans une liste
+            $listEntreprise[] = $entreprise;
+        }
+        foreach ($listEntreprise as $uneEntreprise)
+        {
+            $manager->persist($uneEntreprise);
+        }
 
         /******************************************
          ******** CREATION DES STAGES *************     
          ******************************************/
 
-        // Création d'une nouvelle stage
-        $stageCafe = new Stage();
-        // Définition des attributs
-        $stageCafe->setTitre("Stage de production d'application optimiser la production de produit caféiné H/F");
-        $stageCafe->setDescription($faker->paragraph($nbSentences = 10));
-        $stageCafe->setEmail($faker->companyEmail($maxNbChars = 30));
-        $stageCafe->addMesFormation($formationDUTIC);
-        $stageCafe->setMonEntreprise($entrepriseDev);
-        // Enregistrement du stage créé
-        $manager->persist($stageCafe);
+        $nbStage = $faker->numberBetween($min = 5, $max = 10);
+        $listStage = array();
 
-        /*
-        // Création d'une nouvelle stage
-        $stageElearn = new Stage();
-        // Définition des attributs
-        $stageElearn->setTitre("Développement d'une solution e-learning H/F");
-        $stageElearn->setDescription($faker->paragraph($nbSentences = 10));
-        $stageElearn->setEmail($faker->companyEmail($maxNbChars = 30));
-        // Enregistrement du stage créé
-        $manager->persist($stageElearn);
+        for ($i = 0; $i < $nbStage ; $i++)
+        {
+            $stage = new Stage();
 
-        // Création d'une nouvelle stage
-        $stageInge = new Stage();
-        // Définition des attributs
-        $stageInge->setTitre("Stagiaire ingénieur informatique H/F");
-        $stageInge->setDescription($faker->paragraph($nbSentences = 10));
-        $stageInge->setEmail($faker->companyEmail($maxNbChars = 30));
-        // Enregistrement du stage créé
-        $manager->persist($stageInge);*/
-
-        
+            $stage->setTitre("Stage : " . $faker->jobTitle);
+            $stage->setDescription($faker->realText($maxNbChars = 500, $indexSize = 5));
+            $stage->setEmail($faker->email);
+            
+            // Attribution d'une entreprise au stage
+            $indiceEntreprise = $faker->numberBetween($min = 0, $max = sizeof($listEntreprise)-1);
+            $stage->setMonEntreprise($listEntreprise[$indiceEntreprise]);
+            
+            // Attribution d'une ou plusieurs formations au stage
+            $nbForm = $faker->numberBetween($min = 0, $max = sizeof($listForm)-1);
+            for ($j = 0 ; $j <= $nbForm; $j++){
+                $numFormation = $faker->numberBetween($min = 0, $max = sizeof($listForm)-1);
+                $stage->addMesFormation($listForm[$numFormation]);
+            }
+            
+            // Ajout dans une liste
+            $listStage[] = $stage;
+        }
+        foreach ($listStage as $unStage)
+        {
+            $manager->persist($unStage);
+        }
         
         // Envoyer les données en BD
         $manager->flush();

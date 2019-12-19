@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+use App\Entity\Stage;
 
 class ProstageController extends AbstractController
 {
@@ -17,7 +18,13 @@ class ProstageController extends AbstractController
 
     public function bvn()
     {
-        return $this->render('prostage/bvn.html.twig',['name' => 'Accueil']);
+        // Récupérer le repository de l'entité Stage
+        $repStage = $this->getDoctrine()->getRepository(Stage::class);
+        
+        // Récupérer les stages enregistrés en BD
+        $stages = $repStage->findAll();
+        // Envoyer les stages récupérés à la vue chargée de les afficher
+        return $this->render('prostage/bvn.html.twig',['name' => 'Accueil','stages' => $stages]);
     }
 
     public function entreprises()
