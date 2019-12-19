@@ -77,7 +77,7 @@ class AppFixtures extends Fixture
             $stage = new Stage();
 
             $stage->setTitre("Stage : " . $faker->jobTitle);
-            $stage->setDescription($faker->realText($maxNbChars = 500, $indexSize = 5));
+            $stage->setDescription($faker->realText($maxNbChars = 255, $indexSize = 3));
             $stage->setEmail($faker->email);
             
             // Attribution d'une entreprise au stage

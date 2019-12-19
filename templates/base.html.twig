@@ -20,31 +20,36 @@
     <!-- Barre de navigation -->
         {% block navbar %}
         <div class="row">
-		<div class="col-md-12">
-    
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            
-            <a class="navbar-brand" href="{{ path('prostage_bvn') }}"> Prostages </a>
+            <div class="col-md-12">
+        
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                
+                    <a class="navbar-brand" href="{{ path('prostage_bvn') }}"> Prostages </a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('prostage_entreprises') }}"> Entreprises </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('prostage_formations') }}"> Formations </a>
-                </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('prostage_entreprises') }}"> Entreprises </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('prostage_formations') }}"> Formations </a>
+                        </li>
 
-                </ul>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-dark" href="{{ path('prostage_aPropos') }}"> A propos </a>
+                        </li>
+
+
+                        </ul>
+                    </div>
+                </nav>
             </div>
-            </nav>
-    </div>
-	</div>
+	    </div>
         {% endblock %}
 
 </br>
@@ -57,18 +62,12 @@
             </div>
     </div>
 
-</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
-
     <!-- piedPage -->
         {% block piedPage %}
         <div class="row">
             <div class="col-md-12">
                 <footer class="footer fixed-bottom">
-                    <blockquote class="blockquote text-center">
-                        <p class="mb-0">“ Parce qu'un étudiant sans stage est un étudiant sans DUT ”</p>
-                        <cite title="Non ! Cet auteur restera anonyme"> - Auteur anonyme</cite>
-                    </blockquote>
-                    <a type="button" class="btn btn-secondary btn-lg btn-block" href="#hautPage"> Retourner en haut de la page </a>
+                    <a type="button" class="btn btn-primary btn-lg btn-block" href="#hautPage"> Retourner en haut de la page </a>
                 </footer>
             </div>
         </div>

@@ -17,3 +17,15 @@ prostage_formations:
 prostage_stages:
     path: /stages/{id}
     controller: App\Controller\ProstageController::stages
+
+prostage_parEntreprise:
+    path: /entreprises/{id}
+    controller: App\Controller\ProstageController::parEntreprise
+
+prostage_parFormation:
+    path: /formations/{id}
+    controller: App\Controller\ProstageController::parFormation
+
+prostage_aPropos:
+    path: /apropos
+    controller: App\Controller\ProstageController::aPropos

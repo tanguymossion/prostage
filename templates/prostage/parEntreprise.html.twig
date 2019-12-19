@@ -1,9 +1,13 @@
 {% extends 'base.html.twig' %}
 
+{% block titre %}
+    {{ parent() }} / {{ name }}
+{% endblock %}
+
 {% block contenu %}
-    <h2> Liste des stages </h2>
+    <h2> Liste des stages proposés par l'entreprise <b> {{ entreprise.nom }} </b> </h2>
     <div class="accordion" id="accordionExample">
-        {% for stageCourant in stages %}
+        {% for stageCourant in entreprise.mesStages %}
         <div class="card">
             <div class="card-header" id="headingOne">
                 <h2 class="mb-0">
@@ -14,16 +18,12 @@
             </div>
             <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body">
-                    <b> Entreprise :</b> {{ stageCourant.monEntreprise.nom }} </br>
                     <b> Formation(s) :</b> 
-                    </br>
                     <ul>
                     {% for formationCourante in stageCourant.mesFormations %}
                     <li> {{ formationCourante.nomCourt }} </li>
                     {% endfor %}
                     </ul>
-                    {{ stageCourant.description }}
-                    </br></br>
                     <a class="btn btn-primary" href={{ path ('prostage_stages',{'id':stageCourant.id}) }} role="button" > Voir plus </a>
                 </div>
             </div>

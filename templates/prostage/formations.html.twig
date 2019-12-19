@@ -1,10 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block titre %}
-    {{ parent() }} / Formations
+    {{ parent() }} / {{ name }}
 {% endblock %}
 
 {% block contenu %}
-    <h1> Cette page affichera la liste des formations de l'IUT </h1>
+    <h2> Liste des formations </h2>
+    <div class="accordion" id="accordionExample">
+        {% for formationCourante in formations %}
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button title="Vas-y clique !" class="btn btn-link-secondary collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        <u> {{ formationCourante.nomCourt }} </u>
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    <b> Nom complet : </b> {{ formationCourante.nomLong }} </br>
+                    </br>
+                    <a class="btn btn-primary" href={{ path ('prostage_parFormation',{'id':formationCourante.id}) }} role="button" > Voir les stages proposés </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
 {% endblock %}
 

@@ -1,9 +1,26 @@
 {% extends 'base.html.twig' %}
 
 {% block titre %}
-    {{ parent() }} / Stages
+    {{ parent() }} / {{ name }}
 {% endblock %}
 
 {% block contenu %}
-    <h1> Cette page affichera le descriptif du stage ayant pour identifiant {{idStage}} </h1>
+    <h2> {{ stage.titre }} </h2>
+    Proposé par l'entreprise : <b> {{stage.monEntreprise.nom}} </b> </br>
+    Proposé pour : 
+    {% for formationCourante in stage.mesFormations %}
+    <b> {{ formationCourante.nomCourt }} </b>
+    {% endfor %}
+    </br></br></br>
+
+    <h4> Description </h4>
+    {{ stage.description }}
+    </br></br></br>
+
+    <h4> Contact </h4>
+    <b> Email : </b> {{ stage.email }} </br>
+    <b> Adresse de l'entreprise : </b> {{ stage.monEntreprise.adresse }} </br>
+    <b> Site web de l'entreprise : </b> <a href="{{ stage.monEntreprise.site }}">{{ stage.monEntreprise.site }}</a> </br>
+
+
 {% endblock %}

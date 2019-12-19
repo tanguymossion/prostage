@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %}
+    {{ parent() }} / {{ name }}
+{% endblock %}
+
+{% block contenu %}
+    <h2> Ce site a été réalisé par Tanguy Mossion (TP4) à l'aide de Symfony </h2> </br>
+
+    Ce site a été réalisé dans le cadre du module M3104 : Programmation Web côté serveur - Symfony </br></br>
+    A l'aide de ce site vous devriez être capable de trouver un stage qui vous correspond. </br>
+    Trouver un stage, c'est important : </br></br>
+
+    <blockquote class="blockquote text-center">
+        <p class="mb-0">“ Parce qu'un étudiant sans stage est un étudiant sans DUT ”</p>
+        <cite title="Non ! Cet auteur restera anonyme"> - Auteur anonyme</cite>
+    </blockquote>
+{% endblock %}

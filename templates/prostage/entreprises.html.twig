@@ -1,10 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block titre %}
-    {{ parent() }} / Entreprises
+    {{ parent() }} / {{ name }}
 {% endblock %}
 
 {% block contenu %}
-    <h1> Cette page affichera la liste des entreprises proposant un stage </h1>
+    <h2> Liste des entreprises </h2>
+    <div class="accordion" id="accordionExample">
+        {% for entrepriseCourante in entreprises %}
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button title="Vas-y clique !" class="btn btn-link-secondary collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        <u> {{ entrepriseCourante.nom }} : {{ entrepriseCourante.activite }} </u>
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    <b> Adresse : </b> {{ entrepriseCourante.adresse }} </br>
+                    <b> Site : </b> {{ entrepriseCourante.site }} </br></br>
+                    <a class="btn btn-primary" href={{ path ('prostage_parEntreprise',{'id':entrepriseCourante.id}) }} role="button" > Voir les stages proposés </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
 {% endblock %}
 
