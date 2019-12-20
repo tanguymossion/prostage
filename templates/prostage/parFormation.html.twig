@@ -7,18 +7,16 @@
 {% block contenu %}
     <h2> Liste des stages proposés pour la formation <b> {{ formation.nomLong }} </b> </h2>
     <div class="accordion" id="accordionExample">
-        {% set monId = "a" %}
         {% for stageCourant in formation.mesStages %}
-            {% set monId =  monId ~ "a" %}
             <div class="card">
                 <div class="card-header" id="headingOne">
                     <h2 class="mb-0">
-                        <button title="Vas-y clique !" class="btn btn-link-secondary collapsed" type="button" data-toggle="collapse" data-target="#{{monId}}" aria-expanded="false" aria-controls="{{monId}}">
+                        <button title="Vas-y clique !" class="btn btn-link-secondary collapsed" type="button" data-toggle="collapse" data-target="#collapse{{stageCourant.id}}" aria-expanded="false" aria-controls="collapse{{stageCourant.id}}">
                             <u> {{ stageCourant.titre }} </u>
                         </button>
                     </h2>
                 </div>
-                <div id="{{monId}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div id="collapse{{stageCourant.id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body">
                         <b> Entreprise :</b> {{ stageCourant.monEntreprise.nom }} </br>
                         <b> Formation(s) :</b> 

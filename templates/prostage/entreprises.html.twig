@@ -7,18 +7,16 @@
 {% block contenu %}
     <h2> Liste des entreprises </h2>
     <div class="accordion" id="accordionExample">
-        {% set monId = "a" %}
         {% for entrepriseCourante in entreprises %}
-            {% set monId =  monId ~ "a" %}
             <div class="card">
                 <div class="card-header" id="headingOne">
                     <h2 class="mb-0">
-                        <button title="Vas-y clique !" class="btn btn-link-secondary collapsed" type="button" data-toggle="collapse" data-target="#{{monId}}" aria-expanded="false" aria-controls="{{monId}}">
+                        <button title="Vas-y clique !" class="btn btn-link-secondary collapsed" type="button" data-toggle="collapse" data-target="#collapse{{entrepriseCourante.id}}" aria-expanded="false" aria-controls="collapse{{entrepriseCourante.id}}">
                             <u> {{ entrepriseCourante.nom }} : {{ entrepriseCourante.activite }} </u>
                         </button>
                     </h2>
                 </div>
-                <div id="{{monId}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div id="collapse{{entrepriseCourante.id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body">
                         <b> Adresse : </b> {{ entrepriseCourante.adresse }} </br>
                         <b> Site : </b> {{ entrepriseCourante.site }} </br></br>
