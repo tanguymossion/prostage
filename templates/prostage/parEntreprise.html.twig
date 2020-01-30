@@ -7,7 +7,7 @@
 {% block contenu %}
     <h2> Liste des stages proposés par l'entreprise <b> {{ entreprise.nom }} </b> </h2>
     <div class="accordion" id="accordionExample">
-        {% for stageCourant in entreprise.mesStages %}
+        {% for stageCourant in stages %}
             <div class="card">
                 <div class="card-header" id="headingOne">
                     <h2 class="mb-0">

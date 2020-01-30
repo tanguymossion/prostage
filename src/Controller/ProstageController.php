@@ -24,7 +24,7 @@ class ProstageController extends AbstractController
     public function bvn(StageRepository $repStage)
     {
         // Récupérer les stages enregistrés en BD
-        $stages = $repStage->findAll();
+        $stages = $repStage->findStagesEtEntreprises();
 
         // Envoyer les stages récupérés à la vue chargée de les afficher
         return $this->render('prostage/bvn.html.twig',['name' => 'Accueil','stages' => $stages]);
@@ -56,14 +56,26 @@ class ProstageController extends AbstractController
     
     public function parEntreprise(Entreprise $entreprise)
     {
+        // Récupérer le repository de l'entité Entreprise	
+        $repStage = $this->getDoctrine()->getRepository(Stage::class);
+
+        // Récupérer l'entreprise correspondant à l'id enregistré en BD	
+        $stages = $repStage->findByEntreprise($entreprise);
+        
         // Envoyer l'entreprise récupérée à la vue
-        return $this->render('prostage/parEntreprise.html.twig',['name' => 'Stages par entreprise','entreprise' => $entreprise]);
+        return $this->render('prostage/parEntreprise.html.twig',['name' => 'Stages par entreprise','entreprise' => $entreprise, 'stages' => $stages]);
     }
 
     public function parFormation(Formation $formation)
     {
+        // Récupérer le repository de l'entité Entreprise	
+        $repStage = $this->getDoctrine()->getRepository(Stage::class);
+
+        // Récupérer l'entreprise correspondant à l'id enregistré en BD	
+        $stages = $repStage->findByFormation($formation);
+        
         // Envoyer la formation récupérée à la vue
-        return $this->render('prostage/parFormation.html.twig',['name' => 'Stages par formation','formation' => $formation]);
+        return $this->render('prostage/parFormation.html.twig',['name' => 'Stages par formation','formation' => $formation, 'stages' => $stages]);
     }
 
     public function aPropos()
