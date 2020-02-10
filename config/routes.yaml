@@ -10,6 +10,10 @@ prostage_entreprises:
     path: /entreprises
     controller: App\Controller\ProstageController::entreprises
 
+prostage_ajouterEntreprise:
+    path: /entreprises/ajouter
+    controller: App\Controller\ProstageController::ajouterEntreprise
+
 prostage_formations:
     path: /formations
     controller: App\Controller\ProstageController::formations

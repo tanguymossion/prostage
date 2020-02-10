@@ -39,6 +39,12 @@ class ProstageController extends AbstractController
         return $this->render('prostage/entreprises.html.twig',['name' => 'Entreprises','entreprises' => $entreprises]);
     }
 
+    public function ajouterEntreprise(EntrepriseRepository $repEntreprise)
+    {
+        // Afficher la page présentant le formulaire d'ajout d'une entreprise
+        return $this->render('prostage/ajouterEntreprise.html.twig');
+    }
+
     public function formations(FormationRepository $repFormation)
     {
         // Récupérer les entreprises enregistrées en BD
