@@ -70,7 +70,39 @@ class ProstageController extends AbstractController
         }
 
         // Afficher la page présentant le formulaire d'ajout d'une entreprise
-        return $this->render('prostage/ajouterEntreprise.html.twig',['vueFormulaire' => $formulaireEntreprise->createView()]);
+        return $this->render('prostage/ajouterModifierEntreprise.html.twig',['vueFormulaire' => $formulaireEntreprise->createView(),
+        'action'=>"ajouter"]);
+    }
+
+    public function modifierEntreprise(Request $request, ObjectManager $manager, Entreprise $entreprise)
+    {
+
+        // Création du formulaire permettant de saisir une entreprise
+        $formulaireEntreprise = $this->createFormBuilder($entreprise)
+        ->add('nom')
+        ->add('adresse')
+        ->add('activite')
+        ->add('site')
+        ->getForm();
+        
+        /* On demande au formulaire d'analyser la dernière reqûete Http. 
+        Si le tableau POST contenu dans cette requête contient des variables nom, adresse, etc.
+        alors la méthode handleRequest() récupère les valeurs de ces variables et les affecte à l'objet $entreprise*/
+        $formulaireEntreprise->handleRequest($request);
+        
+        if ($formulaireEntreprise->isSubmitted())
+        {
+            // Enregistrer l'entreprise en base de données
+            $manager->persist($entreprise);
+            $manager->flush();
+
+            // Rediriger l'utilisateur vers la page d'accueil
+            return $this->redirectToRoute('prostage_bvn');
+        }
+
+        // Afficher la page présentant le formulaire d'ajout d'une entreprise
+        return $this->render('prostage/ajouterModifierEntreprise.html.twig',['vueFormulaire' => $formulaireEntreprise->createView(),
+        'action'=>"modifier"]);
     }
 
     public function formations(FormationRepository $repFormation)

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %}
+{% if action == "ajouter" %}
+    Ajout d'une entreprise
+{% else %}
+    Modification d'une entreprise
+{% endif %}
+{% endblock %}
+
+{% block contenu %}
+{% if action == "ajouter" %}
+    Saisissez les caractéristiques de l'entreprise que vous souhaitez ajouter.
+{% else %}
+    Modifiez les caractéristiques de l'entreprise que vous souhaitez.
+{% endif %}
+
+
+{{ form_start(vueFormulaire) }}
+
+{{ form_row(vueFormulaire.nom, {'attr':{'placeholder':"Nom de l'entreprise..."}} ) }}
+
+{{ form_row(vueFormulaire.adresse, {'attr':{'placeholder':"Adresse de l'entreprise..."}} ) }}
+
+{{ form_row(vueFormulaire.activite, {'attr':{'placeholder':"Activité de l'entreprise..."}} ) }}
+
+{{ form_row(vueFormulaire.site, {'attr':{'placeholder':"Site web (url) de l'entreprise..."}}) }}
+
+
+<br><button type="submit" class="btn btn-primary"> Enregistrer </button>
+
+{{ form_end(vueFormulaire) }}
+
+{% endblock %}
