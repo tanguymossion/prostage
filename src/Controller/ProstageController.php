@@ -12,6 +12,10 @@ use App\Repository\StageRepository;
 use App\Repository\EntrepriseRepository;
 use App\Repository\FormationRepository;
 
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
+
+
 class ProstageController extends AbstractController
 {
     public function index()
@@ -46,10 +50,10 @@ class ProstageController extends AbstractController
 
         // Création du formulaire permettant de saisir une entreprise
         $formulaireEntreprise = $this->createFormBuilder($entreprise)
-        ->add('nom')
-        ->add('adresse')
-        ->add('activite')
-        ->add('site')
+        ->add('nom', TextType::class)
+        ->add('adresse', TextType::class)
+        ->add('activite', TextType::class)
+        ->add('site', UrlType::class)
         ->getForm();
         
         // Afficher la page présentant le formulaire d'ajout d'une entreprise
