@@ -7,5 +7,16 @@
 {% block contenu %}
 Saisissez les caractéristiques de l'entreprise que vous souhaitez ajouter.
 
-{{ form(vueFormulaire) }}
+{{ form_start(vueFormulaire) }}
+
+{{ form_row(vueFormulaire.nom) }}
+
+{{ form_row(vueFormulaire.adresse) }}
+
+{{ form_row(vueFormulaire.activite) }}
+
+{{ form_row(vueFormulaire.site) }}
+
+{{ form_end(vueFormulaire) }}
+
 {% endblock %}
