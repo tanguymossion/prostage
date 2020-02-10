@@ -9,13 +9,13 @@ Saisissez les caractéristiques de l'entreprise que vous souhaitez ajouter.
 
 {{ form_start(vueFormulaire) }}
 
-{{ form_row(vueFormulaire.nom) }}
+{{ form_row(vueFormulaire.nom, {'attr':{'placeholder':"Nom de l'entreprise..."}} ) }}
 
-{{ form_row(vueFormulaire.adresse) }}
+{{ form_row(vueFormulaire.adresse, {'attr':{'placeholder':"Adresse de l'entreprise..."}} ) }}
 
-{{ form_row(vueFormulaire.activite) }}
+{{ form_row(vueFormulaire.activite, {'attr':{'placeholder':"Activité de l'entreprise..."}} ) }}
 
-{{ form_row(vueFormulaire.site) }}
+{{ form_row(vueFormulaire.site, {'attr':{'placeholder':"Site web (url) de l'entreprise..."}}) }}
 
 {{ form_end(vueFormulaire) }}
 
