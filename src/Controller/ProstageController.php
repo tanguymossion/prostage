@@ -11,6 +11,8 @@ use App\Entity\Formation;
 use App\Repository\StageRepository;
 use App\Repository\EntrepriseRepository;
 use App\Repository\FormationRepository;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
 
 class ProstageController extends AbstractController
 {
@@ -39,7 +41,7 @@ class ProstageController extends AbstractController
         return $this->render('prostage/entreprises.html.twig',['name' => 'Entreprises','entreprises' => $entreprises]);
     }
 
-    public function ajouterEntreprise(EntrepriseRepository $repEntreprise)
+    public function ajouterEntreprise(Request $request, ObjectManager $manager)
     {
         // Création d'une entreprise vierge qui sera remplie par le formulaire
         $entreprise = new Entreprise();
@@ -52,6 +54,21 @@ class ProstageController extends AbstractController
         ->add('site')
         ->getForm();
         
+        /* On demande au formulaire d'analyser la dernière reqûete Http. 
+        Si le tableau POST contenu dans cette requête contient des variables nom, adresse, etc.
+        alors la méthode handleRequest() récupère les valeurs de ces variables et les affecte à l'objet $entreprise*/
+        $formulaireEntreprise->handleRequest($request);
+        
+        if ($formulaireEntreprise->isSubmitted())
+        {
+            // Enregistrer l'entreprise en base de données
+            $manager->persist($entreprise);
+            $manager->flush();
+
+            // Rediriger l'utilisateur vers la page d'accueil
+            return $this->redirectToRoute('prostage_bvn');
+        }
+
         // Afficher la page présentant le formulaire d'ajout d'une entreprise
         return $this->render('prostage/ajouterEntreprise.html.twig',['vueFormulaire' => $formulaireEntreprise->createView()]);
     }
