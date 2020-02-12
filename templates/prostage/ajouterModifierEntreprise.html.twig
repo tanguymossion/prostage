@@ -16,11 +16,11 @@
 {% endif %}
 
 
-{{ form_start(vueFormulaire) }}
+{{ form_start(vueFormulaire,{'attr':{'novalidate':'novalidate'}}) }}
 
 {{ form_row(vueFormulaire.nom, {'attr':{'placeholder':"Nom de l'entreprise..."}} ) }}
 
-{{ form_row(vueFormulaire.adresse, {'attr':{'placeholder':"Adresse de l'entreprise..."}} ) }}
+{{ form_row(vueFormulaire.adresse, {'attr':{'placeholder':"Adresse postale de l'entreprise..."}} ) }}
 
 {{ form_row(vueFormulaire.activite, {'attr':{'placeholder':"Activité de l'entreprise..."}} ) }}
 

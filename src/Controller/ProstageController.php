@@ -59,7 +59,7 @@ class ProstageController extends AbstractController
         alors la méthode handleRequest() récupère les valeurs de ces variables et les affecte à l'objet $entreprise*/
         $formulaireEntreprise->handleRequest($request);
         
-        if ($formulaireEntreprise->isSubmitted())
+        if ($formulaireEntreprise->isSubmitted() && $formulaireEntreprise->isValid())
         {
             // Enregistrer l'entreprise en base de données
             $manager->persist($entreprise);
@@ -90,7 +90,7 @@ class ProstageController extends AbstractController
         alors la méthode handleRequest() récupère les valeurs de ces variables et les affecte à l'objet $entreprise*/
         $formulaireEntreprise->handleRequest($request);
         
-        if ($formulaireEntreprise->isSubmitted())
+        if ($formulaireEntreprise->isSubmitted() && $formulaireEntreprise->isValid())
         {
             // Enregistrer l'entreprise en base de données
             $manager->persist($entreprise);
