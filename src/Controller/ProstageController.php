@@ -14,6 +14,8 @@ use App\Repository\FormationRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+
 class ProstageController extends AbstractController
 {
     public function index()
@@ -50,7 +52,7 @@ class ProstageController extends AbstractController
         $formulaireEntreprise = $this->createFormBuilder($entreprise)
         ->add('nom')
         ->add('adresse')
-        ->add('activite')
+        ->add('activite',TextareaType::class)
         ->add('site')
         ->getForm();
         
@@ -81,7 +83,7 @@ class ProstageController extends AbstractController
         $formulaireEntreprise = $this->createFormBuilder($entreprise)
         ->add('nom')
         ->add('adresse')
-        ->add('activite')
+        ->add('activite',TextareaType::class)
         ->add('site')
         ->getForm();
         
