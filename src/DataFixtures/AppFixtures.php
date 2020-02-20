@@ -76,7 +76,7 @@ class AppFixtures extends Fixture
         {
             $stage = new Stage();
 
-            $stage->setTitre("Stage : " . $faker->jobTitle);
+            $stage->setTitre($faker->jobTitle);
             $stage->setDescription($faker->realText($maxNbChars = 255, $indexSize = 3));
             $stage->setEmail($faker->email);
             

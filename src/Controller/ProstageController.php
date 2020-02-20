@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use App\Form\EntrepriseType;
+use App\Form\StageType;
 
 class ProstageController extends AbstractController
 {
@@ -92,9 +93,37 @@ class ProstageController extends AbstractController
             return $this->redirectToRoute('prostage_bvn');
         }
 
-        // Afficher la page présentant le formulaire d'ajout d'une entreprise
+        // Afficher la page présentant le formulaire de modification d'une entreprise
         return $this->render('prostage/ajouterModifierEntreprise.html.twig',['vueFormulaire' => $formulaireEntreprise->createView(),
         'action'=>"modifier"]);
+    }
+
+    public function ajouterStage(Request $request, ObjectManager $manager)
+    {
+        // Création d'un stage vierge qui sera remplie par le formulaire
+        $stage = new Stage();
+
+        // Création du formulaire permettant de saisir un stage
+        $formulaireStage = $this->createForm(StageType::class, $stage);
+        
+        /* On demande au formulaire d'analyser la dernière reqûete Http. 
+        Si le tableau POST contenu dans cette requête contient des variables nom, adresse, etc.
+        alors la méthode handleRequest() récupère les valeurs de ces variables et les affecte à l'objet $stage*/
+        $formulaireStage->handleRequest($request);
+        
+        if ($formulaireStage->isSubmitted() && $formulaireStage->isValid())
+        {
+            // Enregistrer le stage en base de données
+            $manager->persist($stage);
+            $manager->flush();
+
+            // Rediriger l'utilisateur vers la page d'accueil
+            return $this->redirectToRoute('prostage_bvn');
+        }
+
+        // Afficher la page présentant le formulaire d'ajout d'un stage
+        return $this->render('prostage/ajouterStage.html.twig',['vueFormulaire' => $formulaireStage->createView(),
+        'action'=>"ajouter"]);
     }
 
     public function formations(FormationRepository $repFormation)

@@ -18,6 +18,10 @@ prostage_modifierEntreprise:
     path: /entreprises/modifier/{id}
     controller: App\Controller\ProstageController::modifierEntreprise
 
+prostage_ajouterStage:
+    path: /stages/ajouter
+    controller: App\Controller\ProstageController::ajouterStage
+
 prostage_formations:
     path: /formations
     controller: App\Controller\ProstageController::formations

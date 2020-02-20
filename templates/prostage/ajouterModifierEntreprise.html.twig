@@ -10,9 +10,9 @@
 
 {% block contenu %}
 {% if action == "ajouter" %}
-    Saisissez les caractéristiques de l'entreprise que vous souhaitez ajouter.
+    <h5> Saisissez les caractéristiques de l'entreprise que vous souhaitez ajouter. </h5>
 {% else %}
-    Modifiez les caractéristiques de l'entreprise que vous souhaitez.
+    <h5> Modifiez les caractéristiques de l'entreprise que vous souhaitez. </h5>
 {% endif %}
 
 
@@ -27,7 +27,7 @@
 {{ form_row(vueFormulaire.site, {'attr':{'placeholder':"Site web (url) de l'entreprise..."}}) }}
 
 
-<br><button type="submit" class="btn btn-primary"> Enregistrer </button>
+<br><button type="submit" class="btn btn-primary"> Valider </button>
 
 {{ form_end(vueFormulaire) }}
 

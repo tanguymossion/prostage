@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %}
+    Ajout d'un stage
+{% endblock %}
+
+{% block contenu %}
+    <h5> Saisissez les caractéristiques du stage que vous souhaitez ajouter. </h5>
+
+{{ form_start(vueFormulaire) }}
+
+{{ form_row(vueFormulaire.titre) }}
+{{ form_row(vueFormulaire.description) }}
+{{ form_row(vueFormulaire.email) }}
+
+<h5> {{ form_row(vueFormulaire.monEntreprise, { 'label' : 'Entreprise' }) }} </h5>
+<h5> {{ form_row(vueFormulaire.mesFormations, { 'label' : 'Le stage est proposé aux formations suivantes : ' }) }} </h5>
+
+<br><button type="submit" class="btn btn-primary"> Valider </button>
+
+{{ form_end(vueFormulaire) }}
+
+{% endblock %}
