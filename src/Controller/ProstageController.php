@@ -14,7 +14,7 @@ use App\Repository\FormationRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use App\Form\EntrepriseType;
 
 class ProstageController extends AbstractController
 {
@@ -49,12 +49,7 @@ class ProstageController extends AbstractController
         $entreprise = new Entreprise();
 
         // Création du formulaire permettant de saisir une entreprise
-        $formulaireEntreprise = $this->createFormBuilder($entreprise)
-        ->add('nom')
-        ->add('adresse')
-        ->add('activite',TextareaType::class)
-        ->add('site')
-        ->getForm();
+        $formulaireEntreprise = $this->createForm(EntrepriseType::class, $entreprise);
         
         /* On demande au formulaire d'analyser la dernière reqûete Http. 
         Si le tableau POST contenu dans cette requête contient des variables nom, adresse, etc.
@@ -79,13 +74,8 @@ class ProstageController extends AbstractController
     public function modifierEntreprise(Request $request, ObjectManager $manager, Entreprise $entreprise)
     {
 
-        // Création du formulaire permettant de saisir une entreprise
-        $formulaireEntreprise = $this->createFormBuilder($entreprise)
-        ->add('nom')
-        ->add('adresse')
-        ->add('activite',TextareaType::class)
-        ->add('site')
-        ->getForm();
+        // Création du formulaire permettant de modifier une entreprise
+        $formulaireEntreprise = $this->createForm(EntrepriseType::class, $entreprise);
         
         /* On demande au formulaire d'analyser la dernière reqûete Http. 
         Si le tableau POST contenu dans cette requête contient des variables nom, adresse, etc.
