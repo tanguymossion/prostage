@@ -1,11 +1,11 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory:
-                users:
-                    tanguy: { password: $2y$15$oBR/qaSH6OZQs9SqxJSj2upYlXMYzFlEuVBMlTSU1.Jq5FvEu49PS, roles: ROLE_ADMIN }
-                    myUser: { password: $2y$15$c4FrAN.jGAwoFRGeFLhrc.2UKfPqqFpYjqwaqlGxsaDmfOBoeZaKO, roles: ROLE_USER }
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -25,10 +25,11 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/entreprises/ajouter, roles: ROLE_ADMIN }
+        - { path: ^/stages/ajouter, roles: [ROLE_USER, ROLE_ADMIN] }
 
     encoders:
-        Symfony\Component\Security\Core\User\User:
-            algorithm:  bcrypt
-            cost:       15
+        App\Entity\User:
+            algorithm: bcrypt
+            cost: 15
+
