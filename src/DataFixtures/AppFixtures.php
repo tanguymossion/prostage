@@ -5,8 +5,10 @@ namespace App\DataFixtures;
 use App\Entity\Formation;
 use App\Entity\Entreprise;
 use App\Entity\Stage;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+
 
 class AppFixtures extends Fixture
 {
@@ -97,8 +99,29 @@ class AppFixtures extends Fixture
         foreach ($listStage as $unStage)
         {
             $manager->persist($unStage);
-        }
-        
+        }        
+
+        /******************************************
+         ******** CREATION DES USERS **************     
+         ******************************************/
+        $tanguy = new User();
+        $tanguy->setPrenom("Tanguy");
+        $tanguy->setNom("Mossion");
+        $tanguy->setEmail("tanguy@free.fr");
+        $tanguy->setRoles(["ROLE_USER", "ROLE_ADMIN"]);
+        $tanguy->setPassword('$2y$15$CvnkOss0Kpvq/2Pr1gips.gY0Ng/5vzFfH6Ft00I9aL6XBl0.9xJ2');
+
+        $manager->persist($tanguy);
+
+        $myUser = new User();
+        $myUser->setPrenom("MyUserPrenom");
+        $myUser->setNom("MyUserNom");
+        $myUser->setEmail("myuser@free.fr");
+        $myUser->setRoles(["ROLE_USER"]);
+        $myUser->setPassword('$2y$15$FlNQhixQxp9fzfrvWu6hQ.d9ZQ05EWkr5zba1LBcxK6saKFzWTk4K');
+
+        $manager->persist($myUser);
+
         // Envoyer les données en BD
         $manager->flush();
     }
