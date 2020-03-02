@@ -106,8 +106,8 @@ class ProstageController extends AbstractController
         // Création du formulaire permettant de saisir un stage
         $formulaireStage = $this->createForm(StageType::class, $stage);
         
-        /* On demande au formulaire d'analyser la dernière reqûete Http. 
-        Si le tableau POST contenu dans cette requête contient des variables nom, adresse, etc.
+        /* On demande au formulaire d'analyser la dernière reqûete Http.
+        Si le tableau POST contenu dans cette requête contient des variables titre, description, etc.
         alors la méthode handleRequest() récupère les valeurs de ces variables et les affecte à l'objet $stage*/
         $formulaireStage->handleRequest($request);
         

@@ -41,14 +41,14 @@
                                 <a class="nav-link" href="{{ path('prostage_formations') }}"> Formations </a>
                             </li>
 
-                            {# Fonctionnalités pour l'administrateur #}
+                            {# Fonctionnalité pour l'administrateur #}
                             {% if is_granted('ROLE_ADMIN') %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('prostage_ajouterEntreprise') }}"><i> + Ajouter une entreprise </i></a>
                             </li>
                             {% endif %}
 
-                            {# Fonctionnalités pour l'utilisateur authentifié #}
+                            {# Fonctionnalité pour l'utilisateur authentifié #}
                             {% if is_granted('ROLE_USER') %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('prostage_ajouterStage') }}"><i> + Ajouter un stage </i></a>
@@ -63,26 +63,34 @@
                         </ul>
                         <ul class="navbar-nav ml-md-auto">
 
-                            <li class="nav-item active">
-
-                                    {# Fonctionnalités pour l'utilisateur authentifié #}
-                                    {% if is_granted('ROLE_USER') %}
+                        {# Fonctionnalité pour l'utilisateur authentifié #}
+                            {% if is_granted('ROLE_USER') %}
+                                <li class="nav-item active">
                                         <a class="nav-link" href="{{ path('app_logout') }}">
                                             <b>{{ app.user.prenom }} {{ app.user.nom }}</b>
                                             <img src="https://image.flaticon.com/icons/svg/975/975357.svg"
                                             style="width:30px;height:30px;margin-left:2.5em;">
                                             Déconnexion
                                             <span class="sr-only">(current)</span>
-                                    {# Fonctionnalités pour l'utilisateur NON authentifié #}                            
-                                    {% else %}
-                                        <a class="nav-link" href="{{ path('app_login') }}">
-                                            <img src="https://image.flaticon.com/icons/svg/975/975357.svg"
-                                            style="width:30px;height:30px;">
-                                            Connexion
-                                            <span class="sr-only">(current)</span>   
-                                    {% endif %}
-                                </a>
-                            </li>
+                                        </a>
+                                </li>
+                        {# Fonctionnalité pour l'utilisateur NON authentifié #} 
+                            {% else %} 
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{{ path('app_inscription') }}">
+                                        <img src="https://image.flaticon.com/icons/svg/980/980385.svg"
+                                        style="width:30px;height:30px;margin-right:0.25em;">
+                                        S'inscrire
+                                        <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item active"> 
+                                <a class="nav-link" href="{{ path('app_login') }}" style="margin-right:0.5em;">
+                                    <img src="https://image.flaticon.com/icons/svg/975/975357.svg"
+                                    style="width:30px;height:30px;">
+                                    Connexion
+                                    <span class="sr-only">(current)</span></a>
+                                </li>
+                            {% endif %}
                         </ul>
                     </div>
                 </nav>
