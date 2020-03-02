@@ -17,10 +17,9 @@
     <h1 class="h3 mb-3 font-weight-normal">Indentifiez-vous</h1>
 
     {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        <div class="alert alert-danger"> Email non reconnu </div>
     {% endif %}
 
-    <br>
     <label for="inputEmail">Email</label>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
 
