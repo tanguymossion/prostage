@@ -15,10 +15,20 @@ security:
 
             # activate different ways to authenticate
 
-            http_basic: true
-            # https://symfony.com/doc/current/security.html#firewalls-authentication
+            #http_basic: true
+            guard:
+                authenticators:
+                    - App\Security\FormulaireLoginAuthenticator
 
             # form_login: true
+            
+            # logout:
+                # path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
+            
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
 
