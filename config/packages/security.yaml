@@ -21,11 +21,11 @@ security:
                     - App\Security\FormulaireLoginAuthenticator
 
             # form_login: true
-            
-            # logout:
-                # path: app_logout
+
+            logout:
+                path: app_logout
                 # where to redirect after logout
-                # target: app_any_route
+                # target:
             
             # https://symfony.com/doc/current/security.html#firewalls-authentication
 
@@ -36,7 +36,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/entreprises/ajouter, roles: ROLE_ADMIN }
-        - { path: ^/stages/ajouter, roles: [ROLE_USER, ROLE_ADMIN] }
+        - { path: ^/stages/ajouter, roles: ROLE_USER }
 
     encoders:
         App\Entity\User:

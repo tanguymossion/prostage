@@ -33,28 +33,47 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('prostage_entreprises') }}"> Entreprises </a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('prostage_entreprises') }}"> Entreprises </a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('prostage_formations') }}"> Formations </a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('prostage_formations') }}"> Formations </a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('prostage_ajouterEntreprise') }}"><i> + Ajouter une entreprise </i></a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('prostage_ajouterEntreprise') }}"><i> + Ajouter une entreprise </i></a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('prostage_ajouterStage') }}"><i> + Ajouter un stage </i></a>
-                        </li>
-
-
-                        <li class="nav-item">
-                            <a class="btn btn-outline-dark" href="{{ path('prostage_aPropos') }}"> A propos </a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('prostage_ajouterStage') }}"><i> + Ajouter un stage </i></a>
+                            </li>
 
 
+                            <li class="nav-item">
+                                <a class="btn btn-outline-dark" href="{{ path('prostage_aPropos') }}"> A propos </a>
+                            </li>
+
+                        </ul>
+                        <ul class="navbar-nav ml-md-auto">
+
+                            <li class="nav-item active">
+                                    {% if is_granted('ROLE_USER') %}
+                                    {{ app.user.prenom }} {{ app.user.nom }}
+                                        <a class="nav-link" href="{{ path('app_logout') }}">
+                                            <img src="https://image.flaticon.com/icons/svg/975/975357.svg"
+                                            style="width:30px;height:30px;">
+                                            Déconnexion
+                                            <span class="sr-only">(current)</span>                            
+                                    {% else %}
+                                        <a class="nav-link" href="{{ path('app_login') }}">
+                                            <img src="https://image.flaticon.com/icons/svg/975/975357.svg"
+                                            style="width:30px;height:30px;">
+                                            Connexion
+                                            <span class="sr-only">(current)</span>   
+                                    {% endif %}
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </nav>
