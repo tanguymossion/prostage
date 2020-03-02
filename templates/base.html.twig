@@ -41,13 +41,19 @@
                                 <a class="nav-link" href="{{ path('prostage_formations') }}"> Formations </a>
                             </li>
 
+                            {# Fonctionnalités pour l'administrateur #}
+                            {% if is_granted('ROLE_ADMIN') %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('prostage_ajouterEntreprise') }}"><i> + Ajouter une entreprise </i></a>
                             </li>
+                            {% endif %}
 
+                            {# Fonctionnalités pour l'utilisateur authentifié #}
+                            {% if is_granted('ROLE_USER') %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('prostage_ajouterStage') }}"><i> + Ajouter un stage </i></a>
                             </li>
+                            {% endif %}
 
 
                             <li class="nav-item">
@@ -58,13 +64,16 @@
                         <ul class="navbar-nav ml-md-auto">
 
                             <li class="nav-item active">
+
+                                    {# Fonctionnalités pour l'utilisateur authentifié #}
                                     {% if is_granted('ROLE_USER') %}
-                                    {{ app.user.prenom }} {{ app.user.nom }}
                                         <a class="nav-link" href="{{ path('app_logout') }}">
+                                            <b>{{ app.user.prenom }} {{ app.user.nom }}</b>
                                             <img src="https://image.flaticon.com/icons/svg/975/975357.svg"
-                                            style="width:30px;height:30px;">
+                                            style="width:30px;height:30px;margin-left:2.5em;">
                                             Déconnexion
-                                            <span class="sr-only">(current)</span>                            
+                                            <span class="sr-only">(current)</span>
+                                    {# Fonctionnalités pour l'utilisateur NON authentifié #}                            
                                     {% else %}
                                         <a class="nav-link" href="{{ path('app_login') }}">
                                             <img src="https://image.flaticon.com/icons/svg/975/975357.svg"
