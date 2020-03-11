@@ -61,20 +61,32 @@
                             </li>
 
                         </ul>
-                        <ul class="navbar-nav ml-md-auto">
+                        <ul class="navbar-nav ml-md-auto align-items-center">
 
-                        {# Fonctionnalité pour l'utilisateur authentifié #}
+                            {# Fonctionnalité pour l'admin #}
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li class="nav-item active">
+                                        <a class="nav-link" href="{{ path('formation_index') }}">
+                                            <img src="https://image.flaticon.com/icons/svg/1726/1726537.svg" 
+                                            style="width:30px;height30px;margin-right:0.5em;">
+                                            <i style="margin-right:2em;"> Gestion formations </i>
+                                        </a>
+                                </li>
+                            {% endif %}
+                            {# Fonctionnalité pour l'utilisateur authentifié #}
                             {% if is_granted('ROLE_USER') %}
+                                <li class="nav-text">
+                                    <t style="width:30px;height:30px;" class="font-weight-bold">{{ app.user.prenom }} {{ app.user.nom }}</t>
+                                </li>
                                 <li class="nav-item active">
                                         <a class="nav-link" href="{{ path('app_logout') }}">
-                                            <b>{{ app.user.prenom }} {{ app.user.nom }}</b>
                                             <img src="https://image.flaticon.com/icons/svg/975/975357.svg"
-                                            style="width:30px;height:30px;margin-left:2.5em;">
+                                            style="width:30px;height:30px;margin-left:2em;">
                                             Déconnexion
                                             <span class="sr-only">(current)</span>
                                         </a>
                                 </li>
-                        {# Fonctionnalité pour l'utilisateur NON authentifié #} 
+                            {# Fonctionnalité pour l'utilisateur NON authentifié #} 
                             {% else %} 
                                 <li class="nav-item active">
                                     <a class="nav-link" href="{{ path('app_inscription') }}">

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %}Gestion des formations{% endblock %}
+
+{% block contenu %}
+    <h2>Liste des formations</h2>
+    
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th>Nom court</th>
+                <th>Nom long</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for formation in formations %}
+            <tr>
+                <td>{{ formation.nomCourt }}</td>
+                <td>{{ formation.nomLong }}</td>
+                <td>
+                    <a style="margin-right:1em;" href="{{ path('formation_show', {'id': formation.id}) }}">Consulter</a>
+                    <a href="{{ path('formation_edit', {'id': formation.id}) }}">Editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucune formation enregistrée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="{{ path('formation_new') }}" role="button" > Créer une nouvelle formation </a>
+{% endblock %}
