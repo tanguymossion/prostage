@@ -19,7 +19,7 @@ class FormationType extends AbstractType
             ->add('nomLong')
             ->add('mesStages',EntityType::class,
                 ['class' => Stage::class,
-                'choice_label' => function(Stage $stage),
+                'choice_label' => function(Stage $stage)
                 {
                     return $stage->getTitre() . " : " . $stage->getMonEntreprise();
                 },
