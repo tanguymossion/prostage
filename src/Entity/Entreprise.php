@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EntrepriseRepository")
@@ -67,6 +68,12 @@ class Entreprise
      * @ORM\OneToMany(targetEntity="App\Entity\Stage", mappedBy="monEntreprise")
      */
     private $mesStages;
+
+    /**
+     * @Gedmo\Slug(fields={"nom", "activite"})
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
 
     public function __construct()
     {
@@ -160,5 +167,17 @@ class Entreprise
     public function __toString()
     {
         return $this->getNom();
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 }

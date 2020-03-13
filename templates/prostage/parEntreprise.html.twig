@@ -24,7 +24,7 @@
                         <li> {{ formationCourante.nomCourt }} </li>
                         {% endfor %}
                         </ul>
-                        <a class="btn btn-primary" href={{ path ('prostage_stages',{'id':stageCourant.id}) }} role="button" > Voir plus </a>
+                        <a class="btn btn-primary" href={{ path ('prostage_stages',{'slug':stageCourant.slug}) }} role="button" > Voir plus </a>
                     </div>
                 </div>
             </div>

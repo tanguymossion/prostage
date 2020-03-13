@@ -6,6 +6,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Gedmo\Mapping\Annotation as Gedmo;
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FormationRepository")
  */
@@ -32,6 +34,12 @@ class Formation
      * @ORM\ManyToMany(targetEntity="App\Entity\Stage", mappedBy="mesFormations")
      */
     private $mesStages;
+
+    /**
+     * @Gedmo\Slug(fields={"nomCourt"})
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
 
     public function __construct()
     {
@@ -91,6 +99,18 @@ class Formation
             $this->mesStages->removeElement($mesStage);
             $mesStage->removeMesFormation($this);
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

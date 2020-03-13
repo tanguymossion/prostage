@@ -15,7 +15,7 @@ prostage_ajouterEntreprise:
     controller: App\Controller\ProstageController::ajouterEntreprise
 
 prostage_modifierEntreprise:
-    path: /entreprises/modifier/{id}
+    path: /entreprises/modifier/{slug}
     controller: App\Controller\ProstageController::modifierEntreprise
 
 prostage_ajouterStage:
@@ -27,15 +27,15 @@ prostage_formations:
     controller: App\Controller\ProstageController::formations
 
 prostage_stages:
-    path: /stages/{id}
+    path: /stages/{slug}
     controller: App\Controller\ProstageController::stages
 
 prostage_parEntreprise:
-    path: /parentreprise/{id}
+    path: /parentreprise/{slug}
     controller: App\Controller\ProstageController::parEntreprise
 
 prostage_parFormation:
-    path: /parformation/{id}
+    path: /parformation/{slug}
     controller: App\Controller\ProstageController::parFormation
 
 prostage_aPropos:

@@ -21,8 +21,8 @@
                     <div class="card-body">
                         <b> Adresse : </b> {{ entrepriseCourante.adresse }} </br>
                         <b> Site : </b> {{ entrepriseCourante.site }} </br></br>
-                        <a class="btn btn-primary" href={{ path ('prostage_parEntreprise',{'id':entrepriseCourante.id}) }} role="button" > Voir les stages proposés </a>
-                        <a class="btn btn-danger" href={{ path ('prostage_modifierEntreprise',{'id':entrepriseCourante.id}) }} role="button" > Modifier entreprise   </a>
+                        <a class="btn btn-primary" href={{ path ('prostage_parEntreprise',{'slug':entrepriseCourante.slug}) }} role="button" > Voir les stages proposés </a>
+                        <a class="btn btn-danger" href={{ path ('prostage_modifierEntreprise',{'slug':entrepriseCourante.slug}) }} role="button" > Modifier entreprise   </a>
                     </div>
                 </div>
             </div>

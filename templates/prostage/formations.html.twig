@@ -20,7 +20,7 @@
                     <div class="card-body">
                         <b> Nom complet : </b> {{ formationCourante.nomLong }} </br>
                         </br>
-                        <a class="btn btn-primary" href={{ path ('prostage_parFormation',{'id':formationCourante.id}) }} role="button" > Voir les stages proposés </a>
+                        <a class="btn btn-primary" href={{ path ('prostage_parFormation',{'slug':formationCourante.slug}) }} role="button" > Voir les stages proposés </a>
                     </div>
                 </div>
             </div>

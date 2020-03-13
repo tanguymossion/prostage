@@ -49,7 +49,7 @@ class FormationController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="formation_show", methods={"GET"})
+     * @Route("/{slug}", name="formation_show", methods={"GET"})
      */
     public function show(Formation $formation): Response
     {
@@ -59,7 +59,7 @@ class FormationController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="formation_edit", methods={"GET","POST"})
+     * @Route("/{slug}/edit", name="formation_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Formation $formation): Response
     {
@@ -79,7 +79,7 @@ class FormationController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="formation_delete", methods={"DELETE"})
+     * @Route("/{slug}", name="formation_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Formation $formation): Response
     {
