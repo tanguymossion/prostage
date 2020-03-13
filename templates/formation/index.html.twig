@@ -19,8 +19,8 @@
                 <td>{{ formation.nomCourt }}</td>
                 <td>{{ formation.nomLong }}</td>
                 <td>
-                    <a style="margin-right:1em;" href="{{ path('formation_show', {'id': formation.id}) }}">Consulter</a>
-                    <a href="{{ path('formation_edit', {'id': formation.id}) }}">Editer</a>
+                    <a style="margin-right:1em;" href="{{ path('formation_show', {'slug': formation.slug}) }}">Consulter</a>
+                    <a href="{{ path('formation_edit', {'slug': formation.slug}) }}">Editer</a>
                 </td>
             </tr>
         {% else %}

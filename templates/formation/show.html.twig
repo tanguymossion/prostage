@@ -24,7 +24,7 @@
 
     
     <br>
-    <a class="btn btn-danger" href="{{ path('formation_edit', {'id': formation.id}) }}" role="button" > Editer cette formation </a>
+    <a class="btn btn-danger" href="{{ path('formation_edit', {'slug': formation.slug}) }}" role="button" > Editer cette formation </a>
     <br><br>
 
     {{ include('formation/_delete_form.html.twig') }}
