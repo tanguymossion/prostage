@@ -4,3 +4,4 @@ easy_admin:
         - App\Entity\Stage
         - App\Entity\Entreprise
         - App\Entity\Formation
+        - App\Entity\User

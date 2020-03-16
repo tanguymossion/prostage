@@ -103,6 +103,11 @@ class Formation
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->getNomCourt();
+    }
+
     public function getSlug(): ?string
     {
         return $this->slug;
