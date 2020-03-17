@@ -65,6 +65,13 @@
 
                             {# Fonctionnalité pour l'admin #}
                             {% if is_granted('ROLE_ADMIN') %}
+                            <li class="nav-item active">
+                                        <a class="nav-link" href="/admin">
+                                            <img src="https://image.flaticon.com/icons/svg/2206/2206368.svg" 
+                                            style="width:30px;height30px;margin-right:0.5em;">
+                                            <i style="margin-right:2em;"> Fonctions admin </i>
+                                        </a>
+                                </li>
                                 <li class="nav-item active">
                                         <a class="nav-link" href="{{ path('formation_index') }}">
                                             <img src="https://image.flaticon.com/icons/svg/1726/1726537.svg" 

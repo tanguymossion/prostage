@@ -1,7 +1,101 @@
 easy_admin:
     entities:
-        # List the entity class name you want to manage
-        - App\Entity\Stage
-        - App\Entity\Entreprise
-        - App\Entity\Formation
-        - App\Entity\User
+    
+        Stage:
+            class: App\Entity\Stage
+            label: 'Stages'
+            list:
+                title: 'Administration des %%entity_label%%'
+                fields: 
+                    - id
+                    - titre
+                    - { property: 'email', type: 'email' }
+                    - { property: 'monEntreprise', label: 'Entreprise' } 
+                    - { property: 'mesFormations', label: 'Nombre de formations concernées' }
+            form:
+                fields:
+                    - titre
+                    - { property: 'description', type: 'textarea' }
+                    - { property: 'email', help: 'Ce mail permet aux postulants de vous contacter' }
+                    - { property: 'monEntreprise', label: 'Entreprise' } 
+                    - { property: 'mesFormations', label: 'Formations concernées' }
+            
+        Formation:
+            class: App\Entity\Formation
+            label: 'Formations'
+            list:
+                title: 'Administration des %%entity_label%%'
+                fields: 
+                    - id
+                    - nomCourt
+                    - nomLong
+                    - { property: 'mesStages', label: 'Nombre de stages' }
+            form:
+                fields: 
+                    - { type: 'section', label: 'Général', icon: 'graduation-cap'}
+                    - nomCourt
+                    - nomLong
+                    - { type: 'section', label: 'Stages', icon: 'briefcase' }
+                    - { property: 'mesStages', label: 'Stages disponibles' }
+
+        Entreprise:
+            class: App\Entity\Entreprise
+            label: 'Entreprises'
+            list:
+                title: 'Administration des %%entity_label%%'
+                fields:
+                    - id
+                    - nom
+                    - { property: 'activite', label: 'Activité' }
+                    - { property: 'site', label: 'Site web' }
+                    - adresse
+                    - { property: 'mesStages', label: 'Nombre de stages' }
+            form:
+                fields:
+                    - { type: 'section', label: 'Général', icon: 'building'}
+                    - nom
+                    - { property: 'activite', label: 'Activité' }
+                    - { type: 'section', label: 'Contact', icon: 'phone' }
+                    - { property: 'site', label: 'Site web' }
+                    - adresse
+                    - { type: 'section', label: 'Stages', icon: 'briefcase' }
+                    - { property: 'mesStages', label: 'Stages proposés' }   
+                
+        User:
+            class: App\Entity\User
+            label: 'Users'
+            list:
+                title: 'Administration des %%entity_label%%'
+                fields:
+                    - id
+                    - { property: 'email', type: 'email' }
+                    - { property: 'prenom', label: 'Prénom' }
+                    - nom
+                    - { property: 'roles', label: 'Rôles' }
+            form:
+                fields: 
+                    - email
+                    - password
+                    - { property: 'prenom', label: 'Prénom' }
+                    - nom
+                    #- roles
+                    # Il faudrait gérer la proposition
+            
+
+    site_name: '<img src="https://www.logolynx.com/images/logolynx/5f/5f61489e21d23495645ca9417b728cd7.gif" 
+    style="width:25px;height25px;"/> ProStages '
+
+    design:
+        brand_color: '#DF4422'
+        assets:
+            favicon: 'https://www.logolynx.com/images/logolynx/5f/5f61489e21d23495645ca9417b728cd7.gif'
+        menu: 
+            - label: 'Administration'
+            - { entity: 'User', default: true, icon: 'user' } 
+            - label: 'Gestion stages' 
+              icon: bars
+              children:
+                - { entity: 'Stage', icon: 'angle-right' }
+                - { entity: 'Entreprise', icon: 'angle-right' } 
+                - { entity: 'Formation', icon: 'angle-right' }
+            - { label: 'Retour accueil', route: 'prostage_bvn', icon: 'home' }
