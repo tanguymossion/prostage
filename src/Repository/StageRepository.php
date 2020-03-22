@@ -98,4 +98,9 @@ class StageRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('s')
             ->andWhere('s.exampleField = :val')
             ->setParameter('val', $value)
-            ->getQuery
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+    */
+}
