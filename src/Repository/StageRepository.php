@@ -58,7 +58,7 @@ class StageRepository extends ServiceEntityRepository
     }
     
 
-    public function findStagesEtEntreprises()
+    public function findStagesEntreprisesFormations() // Les 3 sont nécessaires car présents sur la page d'accueil
     {
         // Récupération du gestionnaire d'entité
         $gestionnaireEntite = $this->getEntityManager();
@@ -98,9 +98,4 @@ class StageRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('s')
             ->andWhere('s.exampleField = :val')
             ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
-}
+            ->getQuery

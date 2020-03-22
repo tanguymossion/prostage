@@ -29,7 +29,7 @@ class ProstageController extends AbstractController
     public function bvn(StageRepository $repStage)
     {
         // Récupérer les stages enregistrés en BD
-        $stages = $repStage->findStagesEtEntreprises();
+        $stages = $repStage->findStagesEntreprisesFormations();
 
         // Envoyer les stages récupérés à la vue chargée de les afficher
         return $this->render('prostage/bvn.html.twig',['name' => 'Accueil','stages' => $stages]);
