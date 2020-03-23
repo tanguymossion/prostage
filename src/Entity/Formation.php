@@ -31,7 +31,7 @@ class Formation
     private $nomLong;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Stage", inversedBy="mesFormations")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Stage", mappedBy="mesFormations")
      */
     private $mesStages;
 
